@@ -26,9 +26,9 @@ function checksExistsUserAccount(request, response, next) {
 app.post("/users", (request, response) => {
   const { name, username } = request.body;
 
-  const usernameNotInUse = users.some((user) => user.username === username);
+  const usernameInUse = users.some((user) => user.username === username);
 
-  if (usernameNotInUse) {
+  if (usernameInUse) {
     return response.status(400).json({ error: "Username already in use!" });
   }
 
